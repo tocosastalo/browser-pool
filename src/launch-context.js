@@ -81,7 +81,7 @@ class LaunchContext {
      * @param {?string} url
      */
     set proxyUrl(url) {
-        this._proxyUrl = url && new URL(url).href;
+        this._proxyUrl = url && new URL(url).origin;
     }
 
     /**
