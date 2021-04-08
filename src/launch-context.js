@@ -81,7 +81,11 @@ class LaunchContext {
      * @param {?string} url
      */
     set proxyUrl(url) {
-        this._proxyUrl = url && new URL(url).origin;
+        this._proxyUrl = undefined;
+        if (url != null) {
+            const { origin, port } = new URL(url);
+            this._proxyUrl = !port ? `${origin}:80` : origin;
+        }
     }
 
     /**
